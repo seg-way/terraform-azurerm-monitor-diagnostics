@@ -2,6 +2,9 @@
 
 locals {  
   targets_map = { for target in var.target_ids : target => true }
+  metrics_enabled = var.metrics.count == 0 ? false : true
+  metrics = var.metrics.count == 0 ? ["AllMetrics"] : var.metrics
+  
 }
 
 data "azurerm_eventhub_namespace_authorization_rule" "main" {
