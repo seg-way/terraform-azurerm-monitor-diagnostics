@@ -5,10 +5,9 @@ locals {
   targets_map = { for target in var.target_ids : target => true }
 }
 
-data "azurerm_eventhub_authorization_rule" "main" {
+data "azurerm_eventhub_namespace_authorization_rule" "main" {
   name                = var.auth_rule_name
   namespace_name      = var.eventhub_namespace_name
-  eventhub_name       = var.eventhub_name
   resource_group_name = var.resource_group_name
 }
 
