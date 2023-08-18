@@ -18,7 +18,7 @@ resource "azurerm_monitor_diagnostic_setting" "main" {
   eventhub_authorization_rule_id = data.azurerm_eventhub_namespace_authorization_rule.main.id
   eventhub_name                  = var.eventhub_name
 
-  dynamic "log" {
+  dynamic "enabled_log" {
     for_each = var.logs
     content {
       category = log.value
