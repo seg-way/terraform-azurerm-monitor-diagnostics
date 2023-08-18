@@ -1,7 +1,6 @@
 
 
-locals {
-  
+locals {  
   targets_map = { for target in var.target_ids : target => true }
 }
 
