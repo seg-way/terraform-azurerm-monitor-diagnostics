@@ -6,7 +6,6 @@ variable "target_ids" {
   description = "List of resource ids to create diagnostic settings for."
   type        = list(string)
 }
-
 variable "resource_group_name" {
   type = string
   description = "Resource Group Name for Event Hub Namespace"
@@ -15,9 +14,12 @@ variable "eventhub_namespace_name" {
   type = string
   description = "Event Hub Namspace Name"
 }
-
 variable "eventhub_name" {
   description = "Event Hub name"
+}
+variable "auth_rule_name" {
+  type = string
+  default = "RootManageSharedAccessKey"
 }
 
 variable "logs" {

@@ -6,7 +6,7 @@ locals {
 }
 
 data "azurerm_eventhub_authorization_rule" "main" {
-  name                = "RootManageSharedAccessKey"
+  name                = var.auth_rule_name
   namespace_name      = var.eventhub_namespace_name
   eventhub_name       = var.eventhub_name
   resource_group_name = var.resource_group_name
