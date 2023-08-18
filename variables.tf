@@ -2,18 +2,22 @@ variable "name" {
   description = "Name of Diagnostic settings."
 }
 
-variable "destination" {
-  description = "Destination for events, either Event Hub, Log Analytics or a Storage account."
-}
-
 variable "target_ids" {
   description = "List of resource ids to create diagnostic settings for."
   type        = list(string)
 }
 
+variable "resource_group_name" {
+  type = string
+  description = "Resource Group Name for Event Hub Namespace"
+}
+variable "eventhub_namespace_name" {
+  type = string
+  description = "Event Hub Namspace Name"
+}
+
 variable "eventhub_name" {
-  description = "Event Hub name if destination is an event hub."
-  default     = null
+  description = "Event Hub name"
 }
 
 variable "logs" {
