@@ -2,8 +2,8 @@
 
 locals {  
   targets_map = { for target in var.target_ids : target => true }
-  metrics_enabled = var.metrics.count == 0 ? false : true
-  metrics = var.metrics.count == 0 ? ["AllMetrics"] : var.metrics
+  metrics_enabled = length(var.metrics) == 0 ? false : true
+  metrics = length(var.metrics) == 0 ? ["AllMetrics"] : var.metrics
   
 }
 
@@ -33,9 +33,10 @@ resource "azurerm_monitor_diagnostic_setting" "main" {
   }
 
   dynamic "metric" {
-    for_each = var.metrics
+    for_each = local.metrics
     content {
       category = metric.value
+      enabled = local.metrics_enabled
 
       retention_policy {
         enabled = false
